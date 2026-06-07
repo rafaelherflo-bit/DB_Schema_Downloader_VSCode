@@ -52,8 +52,8 @@ Para que la tarea sepa a qué servidor y base de datos conectarse, debes crear u
 Ejemplo de estructura:
 ```json
 {
-  "HOST_url": "tu.servidor.ddns.net",
-  "HOST_port": 22754,
+  "HOST_url": "tu.servidor.net",
+  "HOST_port": 22,
   "HOST_username": "usuario_ssh",
   "HOST_password": "", 
   "DB_username": "admin_db",
