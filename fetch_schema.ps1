@@ -19,7 +19,8 @@ $config = Get-Content $configPath | ConvertFrom-Json
 # 2. Generar la fecha y hora actual para el nombre del archivo
 # Formato resultante: schema_2026-06-06_21-15.sql (Año-Mes-Día_Hora-Minuto)
 $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
-$fileName = "schema_$timestamp.sql"
+$DB_database = $config.DB_database
+$fileName = "schema_${DB_database}_${timestamp}.sql"
 $outputPath = Join-Path $workspaceRoot $fileName
 
 # 3. Preparar los fragmentos del comando de MySQL
