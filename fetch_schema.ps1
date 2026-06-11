@@ -26,6 +26,12 @@ $outputPath = Join-Path $workspaceRoot $fileName
 # 3. Preparar los fragmentos del comando de MySQL
 $mysqlPart = "mysqldump -u $($config.DB_username) -p`"$($config.DB_password)`" --no-data $($config.DB_database)"
 
+# Si existen tablas marcadas para incluir datos, añadimos el comando para extraer solo los INSERTs
+if ($null -ne $config.DB_tablesdata -and $config.DB_tablesdata.Count -gt 0) {
+    $tables = $config.DB_tablesdata -join " "
+    $mysqlPart += " && mysqldump -u $($config.DB_username) -p`"$($config.DB_password)`" --no-create-info $($config.DB_database) $tables"
+}
+
 # 4. Evaluar e intentar la ejecución capturando errores
 if ([string]::IsNullOrEmpty($config.HOST_password)) {
     Write-Host "Conectando mediante llave SSH pública a $($config.HOST_url):$($config.HOST_port)..."
