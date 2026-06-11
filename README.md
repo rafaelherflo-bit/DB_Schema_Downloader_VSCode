@@ -58,7 +58,8 @@ Ejemplo de estructura:
   "HOST_password": "", 
   "DB_username": "admin_db",
   "DB_password": "tu_password_db",
-  "DB_database": "nombre_de_tu_base_de_datos"
+  "DB_database": "nombre_de_tu_base_de_datos",
+  "DB_tablesdata": ["tabla_usuarios", "tabla_equipos", "tabla_productos", "tabla_compras"]
 }
 ```
 
